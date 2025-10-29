@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = ["httpx>=0.28.1", "respx>=0.22.0"]
 
 [tool.ruff]
 line-length = 80
@@ -16,8 +16,10 @@ exclude = [".venv"]
 
 [tool.ruff.lint]
 select = ["ALL"]
-ignore = ["D100"]
+ignore = ["D100", "D107", "N999", "S101"]
 
+[tool.ruff.lint.pydocstyle]
+ignore-decorators = ["abc.abstractmethod", "abstractmethod", "override"]
 
 [tool.ruff.format]
 quote-style = "double"
