@@ -1,6 +1,8 @@
+from typing import override
+
 from httpx import AsyncClient
 
-from services.AsyncRequestsInterface import (
+from .interfaces.AsyncRequestsInterface import (
     AsyncRequestsInterface,
     Response,
 )
@@ -15,6 +17,7 @@ class HttpxAdapter(AsyncRequestsInterface):
             timeout=timeout,
         )
 
+    @override
     async def get(self, url: str) -> Response:
         """Faz uma requisição GET para a url passada."""
         response = await self.__client.get(url)
@@ -24,6 +27,7 @@ class HttpxAdapter(AsyncRequestsInterface):
             "text": response.text,
         }
 
-    async def close(self) -> None:
+    @override
+    async def aclose(self) -> None:
         """Fecha o cliente asyncrono do httpx."""
         await self.__client.aclose()
