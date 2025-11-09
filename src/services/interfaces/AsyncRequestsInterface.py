@@ -25,6 +25,11 @@ class AsyncRequestsInterface(Protocol):
         return self
 
     @final
-    async def __aclose__(self) -> None:
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc: BaseException | None,
+        tb: object,
+    ) -> None:
         """Fecha o AsyncRequestsInterface quando sair do bloco async with."""
         await self.aclose()
