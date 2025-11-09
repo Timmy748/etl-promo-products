@@ -2,7 +2,7 @@ from typing import override
 
 from httpx import AsyncClient
 
-from services.interfaces.AsyncRequestsInterface import (
+from .interfaces.AsyncRequestsInterface import (
     AsyncRequestsInterface,
     Response,
 )
